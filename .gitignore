@@ -1,0 +1,4 @@
+.venv/
+dist/
+sr/pim/build/
+__pycache__/

@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: pim
+Version: 0.1.1
+Summary: Microsoft Azure Command-Line Tools Pim Extension
+Home-page: https://github.com/Azure/azure-cli-extensions/tree/master/src/pim
+Author: Microsoft Corporation
+Author-email: azpycli@microsoft.com
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+
+Microsoft Azure CLI 'pim' Extension
+==========================================
+
+This package is for the 'pim' extension.
+i.e. 'az pim'
+
+.. :changelog:
+
+Release History
+===============
+
+0.1.0
+++++++
+* Initial release.
