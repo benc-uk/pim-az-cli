@@ -2,6 +2,8 @@
 
 An Azure CLI extension for managing Privileged Identity Management (PIM) group activations in Microsoft Entra ID.
 
+This greatly simplifies the process of activating and managing your PIM-eligible groups directly from the command line, without needing to use the Azure Portal and carry out manual steps.
+
 This extension provides a convenient way to list, activate, and manage your PIM-eligible groups directly from the Azure CLI, without needing to navigate the Azure Portal.
 
 ## Features
@@ -89,12 +91,14 @@ az pim status --output table
 
 ### Query Specific Information
 
+You can use JMESPath queries to filter and format output. For example:
+
 ```bash
 # Get just group names and expiration times
 az pim active --query "[].{Group:groupName, Expires:expires}" --output table
 
-# Filter for specific group
-az pim list --query "[?groupName=='Production-Access']"
+# Find PIM groups containing "Readers"
+az pim list --query "[?contains(groupName, 'Readers')]" --output table
 ```
 
 ## Command Reference
@@ -133,7 +137,7 @@ The extension accesses:
 ### Project Structure
 
 ```
-├── src/pim/                    # Extension source code
+├── src/pim/                   # Extension source code
 │   ├── azext_pim/             # Main extension package
 │   │   ├── custom.py          # Command implementations
 │   │   ├── pim.py             # PIM API client
@@ -169,7 +173,7 @@ make build
 
 ## Background
 
-This extension is a Python port of the original [pim-cli-go](https://github.com/benc-uk/pim-cli) tool, bringing PIM management capabilities directly into the Azure CLI.
+This extension is a Python port of the original [pim-cli-go](https://github.com/benc-uk/pim-cli) tool, given that the tool already required the Azure CLI for authentication, a native integration made sense.
 
 ### Why This Extension?
 
@@ -203,7 +207,6 @@ This extension is a Python port of the original [pim-cli-go](https://github.com/
 ## Documentation
 
 - [Detailed README](src/pim/README.rst) - Complete extension documentation
-- [Implementation Details](src/pim/IMPLEMENTATION.md) - Technical implementation notes
 - [Release History](src/pim/HISTORY.rst) - Version history and changelog
 - [Azure PIM Documentation](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
