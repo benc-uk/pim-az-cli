@@ -1,4 +1,5 @@
 .venv/
-dist/
-sr/pim/build/
+src/pim/build/
 __pycache__/
+dist/
+pim.egg-info/

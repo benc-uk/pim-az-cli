@@ -1,23 +1,45 @@
 # --------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See License.txt in the project root for license information.
+# Copyright (c) Ben Coleman, 2026. All rights reserved.
+# Licensed under the MIT License. See LICENSE in the project root for license information.
 # --------------------------------------------------------------------------------------------
-# pylint: disable=line-too-long
-
-from knack.arguments import CLIArgumentType
 
 
 def load_arguments(self, _):
+    with self.argument_context("pim list") as c:
+        pass
 
-    from azure.cli.core.commands.parameters import tags_type
-    from azure.cli.core.commands.validators import get_default_location_from_resource_group
+    with self.argument_context("pim active") as c:
+        pass
 
-    pim_name_type = CLIArgumentType(options_list='--pim-name-name', help='Name of the Pim.', id_part='name')
+    with self.argument_context("pim pending") as c:
+        pass
 
-    with self.argument_context('pim') as c:
-        c.argument('tags', tags_type)
-        c.argument('location', validator=get_default_location_from_resource_group)
-        c.argument('pim_name', pim_name_type, options_list=['--name', '-n'])
+    with self.argument_context("pim status") as c:
+        pass
 
-    with self.argument_context('pim list') as c:
-        c.argument('pim_name', pim_name_type, id_part=None)
+    with self.argument_context("pim request") as c:
+        c.argument(
+            "name",
+            options_list=["--name", "-n"],
+            help="Name of the PIM group to request activation for",
+            required=True,
+        )
+        c.argument(
+            "reason",
+            options_list=["--reason", "-r"],
+            help="Reason for requesting activation",
+            required=True,
+        )
+        c.argument(
+            "duration",
+            options_list=["--duration", "-d"],
+            type=float,
+            help="Duration for the activation in hours (e.g., 0.5, 1, 2, 12)",
+            default=12,
+        )
+        c.argument(
+            "role",
+            options_list=["--role"],
+            help='Role name to activate (e.g., "Member", "Owner")',
+            default="Member",
+        )
