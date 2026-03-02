@@ -19,7 +19,7 @@ This extension provides a convenient way to list, activate, and manage your PIM-
 Install the extension from the published wheel file:
 
 ```bash
-az extension add --source https://github.com/benc-uk/pim-az-cli/releases/download/0.0.1/pim-0.0.1-py3-none-any.whl
+az extension add --source https://github.com/benc-uk/pim-az-cli/releases/download/0.0.2/pim-0.0.2-py3-none-any.whl
 ```
 
 ## Quick Start
