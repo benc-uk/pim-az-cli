@@ -91,7 +91,7 @@ def pending_pim(cmd):
     for assignment in assignments:
         status_info = assignment.get("status", {})
         if isinstance(status_info, dict):
-            status = f"{status_info.get('status', '')} {status_info.get('subStatus', '')}".strip()
+            status = f"{status_info.get('subStatus', '')}".strip()
         else:
             status = str(status_info)
 
@@ -149,7 +149,7 @@ def status_pim(cmd):
     return results
 
 
-def request_pim(cmd, name, reason, duration=12, role="Member"):
+def request_pim(cmd, name, reason, duration=12, role="Member", ticket_number=None):
     """Request activation for a PIM group with the specified role."""
     user_id = pim.get_user_id(cmd.cli_ctx)
 
@@ -184,6 +184,7 @@ def request_pim(cmd, name, reason, duration=12, role="Member"):
             user_id,
             reason,
             duration,
+            ticket_number,
         )
 
         status_info = response.get("status", {})
