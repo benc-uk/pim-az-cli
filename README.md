@@ -75,6 +75,9 @@ az pim request -n "Admin-Group" -r "Emergency maintenance" --role Owner -d 8
 
 # Short activation: 30 minutes
 az pim request -n "ReadOnly-Access" -r "Quick check" -d 0.5
+
+# Activate with ticket number
+az pim request -n "Support-Group" -r "Support case" -d 4 --ticket-number "SUP-12345"
 ```
 
 ### View Active Activations
