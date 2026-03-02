@@ -112,10 +112,8 @@ def create_role_assignment_request(
 
     # Add ticket number if provided
     if ticket_number:
-        request_body["ticketInfo"] = {
-            "ticketNumber": ticket_number,
-            "ticketSystem": "None"
-        }
+        request_body["ticketNumber"] = ticket_number
+        request_body["ticketSystem"] = ""
 
     url = f"{PIM_API_BASE_URL}/roleAssignmentRequests"
 
