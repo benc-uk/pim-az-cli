@@ -43,3 +43,8 @@ def load_arguments(self, _):
             help='Role name to activate (e.g., "Member", "Owner")',
             default="Member",
         )
+        c.argument(
+            "ticket_number",
+            options_list=["--ticket-number", "-t"],
+            help="Ticket number for the activation request",
+        )

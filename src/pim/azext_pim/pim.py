@@ -87,7 +87,7 @@ def get_role_assignment_requests(cli_ctx, user_id, status):
 
 
 def create_role_assignment_request(
-    cli_ctx, role_definition_id, resource_id, user_id, reason, duration_hours
+    cli_ctx, role_definition_id, resource_id, user_id, reason, duration_hours, ticket_number=None
 ):
     """Create a role assignment request to activate a PIM group."""
     # Convert duration (in hours) to ISO 8601 duration format (e.g., PT720M)
@@ -109,6 +109,13 @@ def create_role_assignment_request(
             "duration": iso_duration,
         },
     }
+
+    # Add ticket number if provided
+    if ticket_number:
+        request_body["ticketInfo"] = {
+            "ticketNumber": ticket_number,
+            "ticketSystem": "None"
+        }
 
     url = f"{PIM_API_BASE_URL}/roleAssignmentRequests"
 
